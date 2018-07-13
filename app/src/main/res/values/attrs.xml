@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="customAttrs">
+        <attr name="actionBackIcon" format="reference" />
+        <attr name="navBarVisibility" format="integer" />
+    </declare-styleable>
+</resources>
