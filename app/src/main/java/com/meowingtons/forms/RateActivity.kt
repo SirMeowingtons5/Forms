@@ -1,11 +1,16 @@
 package com.meowingtons.forms
 
 
+import android.app.Activity
+import android.app.Dialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Telephony
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
 import android.util.Log
+import android.view.Window
+import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_rate.*
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
 
@@ -27,11 +32,13 @@ class RateActivity : AppCompatActivity() {
 
         tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
+
                 Log.d("SELECTED ", "${tab?.position}")
 
                 when(tab?.position){
                     0 ->{
                         tab.setIcon(R.mipmap.ic_scoreboard_active)
+                        tab?.icon?.alpha = 100
                     }
                     1 ->{
                         tab.setIcon(R.mipmap.ic_performance_active)
@@ -46,6 +53,7 @@ class RateActivity : AppCompatActivity() {
                         tab.setIcon(R.mipmap.ic_profile_active)
                     }
                 }
+                tab?.icon?.alpha = 255
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -67,6 +75,7 @@ class RateActivity : AppCompatActivity() {
                         tab.setIcon(R.mipmap.ic_profile)
                     }
                 }
+                tab?.icon?.alpha = 100
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -74,5 +83,17 @@ class RateActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun showDialog(){
+        val dialog = Dialog(this@RateActivity)
+        dialog.window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.rate_dialog_event)
+        dialog.setCancelable(true)
+
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(dialog.window.attributes)
+        dialog.show()
     }
 }
