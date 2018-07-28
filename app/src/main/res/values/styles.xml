@@ -71,6 +71,6 @@
     </style>
     
     <style name="RatingBarCustom" parent="Widget.AppCompat.RatingBar">
-        <item name="colorControlActivated">#FAB60E</item>
+        <item name="android:progressDrawable">@drawable/custom_ratingbar</item>
     </style>
 </resources>

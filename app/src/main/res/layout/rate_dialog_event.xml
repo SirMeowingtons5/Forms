@@ -53,7 +53,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hint"
             app:layout_constraintVertical_bias="0.175"
-            android:theme="@style/RatingBarCustom"/>
+            style="@style/CustomRatingBar"/>
 
         <TextView
             android:layout_width="wrap_content"

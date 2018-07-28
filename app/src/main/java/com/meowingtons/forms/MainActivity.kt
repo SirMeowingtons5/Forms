@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOError

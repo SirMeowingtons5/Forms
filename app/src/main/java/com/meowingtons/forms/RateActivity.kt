@@ -1,17 +1,13 @@
 package com.meowingtons.forms
 
 
-import android.app.Activity
 import android.app.Dialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Telephony
 import android.support.design.widget.TabLayout
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
-import kotlinx.android.synthetic.main.activity_rate.*
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
 
 class RateActivity : AppCompatActivity() {
@@ -20,6 +16,7 @@ class RateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rate)
         initTabs()
+        showDialog()
     }
 
     fun initTabs(){
