@@ -5,10 +5,20 @@ import android.app.Dialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
+import android.widget.BaseAdapter
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.meowingtons.forms.adapter.RateAdapter
+import com.meowingtons.forms.entity.RateItem
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
+import kotlinx.android.synthetic.main.fragment_rate_new.*
+import kotlinx.android.synthetic.main.item_day_rate.*
+import java.util.*
+import android.widget.Toast
+import org.jetbrains.anko.toast
 
 class RateActivity : AppCompatActivity() {
 
@@ -16,7 +26,8 @@ class RateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rate)
         initTabs()
-        showDialog()
+        initAdapter()
+        //showDialog()
     }
 
     fun initTabs(){
@@ -92,5 +103,33 @@ class RateActivity : AppCompatActivity() {
         val lp = WindowManager.LayoutParams()
         lp.copyFrom(dialog.window.attributes)
         dialog.show()
+    }
+
+    fun initAdapter(){
+        rvList.setHasFixedSize(true)
+        rvList.layoutManager = LinearLayoutManager(this)
+
+        val adapter = RateAdapter(generateFakeData())
+        adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN)
+        adapter.setNotDoAnimationCount(7)
+        adapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener{_, _, position ->
+            toast("onItemClick @ $position")
+        }
+        adapter.onItemChildClickListener = BaseQuickAdapter.OnItemChildClickListener{
+            mAdapter, view, position ->
+            //val item = mAdapter.getItem(position) as RateItem
+            //TODO: implement
+        }
+        rvList.adapter = adapter
+    }
+
+    fun generateFakeData() : List<RateItem>{
+        val res = ArrayList<RateItem>()
+        for (i in 0..5) {
+            res.add(RateItem(false, false, "#goal_name", Date(1532957218), null))
+            res.add(RateItem(true, false, "#goal_name", Date(1532957218), 7))
+            res.add(RateItem(false, true, "#goal_name", Date(1532957218), null))
+        }
+        return res
     }
 }

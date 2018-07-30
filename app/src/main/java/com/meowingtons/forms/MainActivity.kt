@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.gson.Gson
+import com.meowingtons.forms.entity.Poll
+import com.meowingtons.forms.entity.Question
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOError
@@ -131,11 +133,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun testPoll() : Poll{
+    fun testPoll() : Poll {
         val poll = Poll("Test poll")
 
         var question = Question("Write anything about yourself",
-                "Anything. Literally." ,
+                "Anything. Literally.",
                 true, Question.Type.TEXT)
         poll.questions.add(question)
 
