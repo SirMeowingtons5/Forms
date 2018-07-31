@@ -29,7 +29,7 @@ class RateAdapter(data: List<RateItem>?)
                 RateItemState.FREE_DAY  ->{
                     listOf(R.id.tvDate, R.id.tvGoalName, R.id.btnRate).forEach { helper?.setAlpha(it, 0.25f) }
                     helper?.setVisible(R.id.containerRate, false)
-                    
+
                 }
             }
         }
