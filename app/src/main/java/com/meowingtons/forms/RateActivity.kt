@@ -9,15 +9,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
-import android.widget.BaseAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.meowingtons.forms.adapter.RateAdapter
 import com.meowingtons.forms.entity.RateItem
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
 import kotlinx.android.synthetic.main.fragment_rate_new.*
-import kotlinx.android.synthetic.main.item_day_rate.*
 import java.util.*
-import android.widget.Toast
 import com.meowingtons.forms.entity.RateItemState
 import org.jetbrains.anko.toast
 

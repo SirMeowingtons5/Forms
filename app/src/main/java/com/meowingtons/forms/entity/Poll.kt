@@ -13,15 +13,3 @@ class Question(val title : String, @Transient val hint : String,
 
     var answer : String = "NO ANSWER"
 }
-
-class PollContext {
-    fun bind() {
-
-    }
-
-    fun build(title:String): Poll {
-        return Poll(title)
-    }
-}
-
-//dsl
