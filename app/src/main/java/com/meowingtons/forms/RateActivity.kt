@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_rate_new.*
 import kotlinx.android.synthetic.main.item_day_rate.*
 import java.util.*
 import android.widget.Toast
+import com.meowingtons.forms.entity.RateItemState
 import org.jetbrains.anko.toast
 
 class RateActivity : AppCompatActivity() {
@@ -126,9 +127,9 @@ class RateActivity : AppCompatActivity() {
     fun generateFakeData() : List<RateItem>{
         val res = ArrayList<RateItem>()
         for (i in 0..5) {
-            res.add(RateItem(false, false, "#goal_name", Date(1532957218), null))
-            res.add(RateItem(true, false, "#goal_name", Date(1532957218), 7))
-            res.add(RateItem(false, true, "#goal_name", Date(1532957218), null))
+            res.add(RateItem(RateItemState.NOT_RATED, "#goal_name", Date(1532957218), null))
+            res.add(RateItem(RateItemState.RATED, "#goal_name", Date(1532957218), 7))
+            res.add(RateItem(RateItemState.FREE_DAY, "#goal_name", Date(1532957218), null))
         }
         return res
     }
