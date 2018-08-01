@@ -17,15 +17,10 @@ class RateAdapter (private val data: List<RateItem>)
     : RecyclerView.Adapter<RateAdapter.ViewHolder>(){
     private val LOG_TAG = this.javaClass.canonicalName
 
-    private val RATED_VIEW = 0
-    private val NOT_RATED_VIEW = 1
-    private val FREE_DAY_VIEW = 2
-
     override fun getItemCount() = data.size
 
-    override fun getItemViewType(position: Int): Int {
-        return data[position].rateState.ordinal
-    }
+    override fun getItemViewType(position: Int) = data[position].rateState.ordinal
+
 
     class ViewHolder(val view : View) : RecyclerView.ViewHolder(view)
 
@@ -33,13 +28,13 @@ class RateAdapter (private val data: List<RateItem>)
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.layout_item_day_rate, parent, false)
         when (viewType){
-            0 ->{
+            RateItemState.RATED.ordinal ->{
                 view.stubRatingMark.inflate()
             }
-            1 ->{
+            RateItemState.NOT_RATED.ordinal ->{
                 view.stubBtnRate.inflate()
             }
-            2 ->{
+            RateItemState.FREE_DAY.ordinal ->{
                 view.stubBtnRate.inflate()
                 view.btnRate.isClickable = false
                 view.btnRate.alpha = 0.25f
