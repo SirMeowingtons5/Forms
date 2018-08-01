@@ -33,11 +33,12 @@ class RateAdapter (private val data: List<RateItem>)
             }
             RateItemState.NOT_RATED.ordinal ->{
                 view.stubBtnRate.inflate()
+                listOf(view.tvDate, view.tvGoalName).forEach { it.alpha = 0.5f }
             }
             RateItemState.FREE_DAY.ordinal ->{
                 view.stubBtnRate.inflate()
                 view.btnRate.isClickable = false
-                view.btnRate.alpha = 0.25f
+                listOf(view.tvDate, view.tvGoalName, view.btnRate).forEach { it.alpha = 0.25f }
             }
         }
         return ViewHolder(view)
@@ -49,18 +50,13 @@ class RateAdapter (private val data: List<RateItem>)
         when(data[position].rateState){
             RateItemState.RATED ->{
                 Log.d(LOG_TAG, "RATED @ $position")
-                //holder.view?.stubRatingMark?.inflate()
                 holder.view.tvRateNumber.text = data[position].rateNumber.toString()
             }
             RateItemState.NOT_RATED ->{
                 Log.d(LOG_TAG, "NOT_RATED @ $position")
-                //holder.view?.stubBtnRate?.inflate()
             }
             RateItemState.FREE_DAY ->{
                 Log.d(LOG_TAG, "NOT_RATED @ $position")
-                //holder.view?.stubBtnRate?.inflate()
-                //holder.view.btnRate.isClickable = false
-                //holder.view.btnRate.alpha = 0.25f
             }
         }
     }
