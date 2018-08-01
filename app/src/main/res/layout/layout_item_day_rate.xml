@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="32dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="16dp">
+    android:layout_marginTop="8dp">
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
@@ -31,46 +31,25 @@
         android:clickable="false"
         android:longClickable="false"/>
 
-    <Button
-        android:id="@+id/btnRate"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:background="#FF50E3C2"
-        android:text="RATE"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/containerRate"
+    <ViewStub
+        android:id="@+id/stubBtnRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout="@layout/item_rate_button"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <TextView
-            android:id="@+id/tvRateNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="0"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toStartOf="@id/ivRateStar"
-            app:layout_constraintTop_toTopOf="parent" />
-        <ImageView
-            android:id="@+id/ivRateStar"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@mipmap/ic_star"
-            android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-    </android.support.constraint.ConstraintLayout>
-
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="4dp"/>
+    <ViewStub
+        android:id="@+id/stubRatingMark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout="@layout/item_rate_rating_mark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="4dp"/>
     <View
         android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#FF260067"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

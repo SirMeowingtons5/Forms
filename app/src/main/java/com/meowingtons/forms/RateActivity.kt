@@ -9,14 +9,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.meowingtons.forms.adapter.RateAdapter
 import com.meowingtons.forms.entity.RateItem
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
-import kotlinx.android.synthetic.main.fragment_rate_new.*
 import java.util.*
 import com.meowingtons.forms.entity.RateItemState
-import org.jetbrains.anko.toast
+import kotlinx.android.synthetic.main.fragment_rate_new.*
 
 class RateActivity : AppCompatActivity() {
 
@@ -28,7 +26,7 @@ class RateActivity : AppCompatActivity() {
         //showDialog()
     }
 
-    fun initTabs(){
+    private fun initTabs(){
         tab_layout.addTab(tab_layout.newTab().setIcon(R.mipmap.ic_scoreboard_active), 0)
         tab_layout.addTab(tab_layout.newTab().setIcon(R.mipmap.ic_performance), 1)
         tab_layout.addTab(tab_layout.newTab().setIcon(R.mipmap.ic_tutorials), 2)
@@ -91,7 +89,7 @@ class RateActivity : AppCompatActivity() {
         })
     }
 
-    fun showDialog(){
+    private fun showDialog(){
         val dialog = Dialog(this@RateActivity)
         dialog.window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -103,27 +101,18 @@ class RateActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun initAdapter(){
-        rvList.setHasFixedSize(true)
-        rvList.layoutManager = LinearLayoutManager(this)
+    private fun initAdapter(){
 
-        val adapter = RateAdapter(generateFakeData())
-        adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN)
-        adapter.setNotDoAnimationCount(7)
-        adapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener{_, _, position ->
-            toast("onItemClick @ $position")
+        rvList.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@RateActivity)
+            adapter = RateAdapter(generateFakeData())
         }
-        adapter.onItemChildClickListener = BaseQuickAdapter.OnItemChildClickListener{
-            mAdapter, view, position ->
-            //val item = mAdapter.getItem(position) as RateItem
-            //TODO: implement
-        }
-        rvList.adapter = adapter
     }
 
-    fun generateFakeData() : List<RateItem>{
+    private fun generateFakeData() : List<RateItem>{
         val res = ArrayList<RateItem>()
-        for (i in 0..5) {
+        for (i in 0..10) {
             val timestamp : Long = 1532957218000
             res.add(RateItem(RateItemState.NOT_RATED, "#goal_name", Date(timestamp), null))
             res.add(RateItem(RateItemState.RATED, "#goal_name", Date(timestamp), 7))

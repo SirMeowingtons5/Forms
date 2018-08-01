@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun createQuestionView(question : Question) : View{
-         val view = layoutInflater.inflate(R.layout.item_question, null, false)
+         val view = layoutInflater.inflate(R.layout.layout_item_question, null, false)
          val subview : View
          val container = view.findViewById<LinearLayout>(R.id.viewContainer)
          when(question.type){
