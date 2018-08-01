@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.meowingtons.forms.R
 import com.meowingtons.forms.entity.RateItem
 import com.meowingtons.forms.entity.RateItemState
-import java.text.SimpleDateFormat
+import java.text.DateFormat.getDateInstance
 
 
 class RateAdapter(data: List<RateItem>?)
@@ -14,7 +14,8 @@ class RateAdapter(data: List<RateItem>?)
     private val LOG_TAG = this.javaClass.canonicalName
 
     override fun convert(helper: BaseViewHolder?, item: RateItem?){
-        helper?.setText(R.id.tvDate, SimpleDateFormat("dd.MM.yy").format(item?.date))
+
+        helper?.setText(R.id.tvDate, getDateInstance().format(item?.date))
         helper?.setText(R.id.tvGoalName, item?.goalName)
         if(item!=null){
             when(item.rateState){

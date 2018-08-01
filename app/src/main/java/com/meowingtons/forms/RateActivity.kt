@@ -44,7 +44,7 @@ class RateActivity : AppCompatActivity() {
                 when(tab?.position){
                     0 ->{
                         tab.setIcon(R.mipmap.ic_scoreboard_active)
-                        tab?.icon?.alpha = 100
+                        tab.icon?.alpha = 100
                     }
                     1 ->{
                         tab.setIcon(R.mipmap.ic_performance_active)
@@ -124,9 +124,10 @@ class RateActivity : AppCompatActivity() {
     fun generateFakeData() : List<RateItem>{
         val res = ArrayList<RateItem>()
         for (i in 0..5) {
-            res.add(RateItem(RateItemState.NOT_RATED, "#goal_name", Date(1532957218), null))
-            res.add(RateItem(RateItemState.RATED, "#goal_name", Date(1532957218), 7))
-            res.add(RateItem(RateItemState.FREE_DAY, "#goal_name", Date(1532957218), null))
+            val timestamp : Long = 1532957218000
+            res.add(RateItem(RateItemState.NOT_RATED, "#goal_name", Date(timestamp), null))
+            res.add(RateItem(RateItemState.RATED, "#goal_name", Date(timestamp), 7))
+            res.add(RateItem(RateItemState.FREE_DAY, "#goal_name", Date(timestamp), null))
         }
         return res
     }
