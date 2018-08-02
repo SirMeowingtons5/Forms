@@ -2,6 +2,7 @@ package com.meowingtons.forms
 
 
 import android.app.Dialog
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -14,7 +15,11 @@ import com.meowingtons.forms.entity.RateItem
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
 import java.util.*
 import com.meowingtons.forms.entity.RateItemState
+import com.meowingtons.forms.service.RateNotificationService
 import kotlinx.android.synthetic.main.fragment_rate_new.*
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.delay
+import kotlinx.coroutines.experimental.launch
 
 class RateActivity : AppCompatActivity() {
 
@@ -24,6 +29,10 @@ class RateActivity : AppCompatActivity() {
         initTabs()
         initAdapter()
         //showDialog()
+        launch(UI){
+            delay(2000)
+            startService(Intent(this@RateActivity, RateNotificationService::class.java))
+        }
     }
 
     private fun initTabs(){
