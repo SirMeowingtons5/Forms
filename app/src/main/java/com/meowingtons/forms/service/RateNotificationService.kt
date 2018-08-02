@@ -3,6 +3,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.app.Service
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Binder
 import android.os.IBinder
 import com.meowingtons.forms.R
@@ -60,5 +61,7 @@ class RateNotificationService : Service() {
         }
         dialog.show()
         dialog.tvNotNow.onClick { dialog.dismiss() }
+
+        MediaPlayer.create(this, R.raw.rate_notification).start()
     }
 }
