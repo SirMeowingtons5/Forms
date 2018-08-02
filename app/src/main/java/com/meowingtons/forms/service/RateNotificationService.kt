@@ -1,20 +1,18 @@
 package com.meowingtons.forms.service
+import android.app.AlertDialog
 import android.app.Dialog
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
-import android.util.Log
-import android.widget.ImageView
 import com.meowingtons.forms.R
-import kotlinx.coroutines.experimental.*
-import kotlinx.coroutines.experimental.android.UI
 import android.view.Gravity
-import android.graphics.PixelFormat
 import android.view.WindowManager
 import android.os.Build
+import android.support.v7.view.ContextThemeWrapper
 import android.view.Window
+import kotlinx.android.synthetic.main.layout_rate_notification.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
 /**
@@ -40,18 +38,20 @@ class RateNotificationService : Service() {
     }
     override fun onDestroy() {
         super.onDestroy()
-        dialog.dismiss()
+        if(dialog.isShowing) dialog.dismiss()
     }
 
     private fun showDialog(){
-        dialog = Dialog(this@RateNotificationService)
+        dialog = Dialog(this)
         dialog.window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.rate_dialog_event)
+        dialog.setContentView(R.layout.layout_rate_notification)
         dialog.setCancelable(true)
+        dialog.window.setGravity(Gravity.TOP or Gravity.CENTER)
+        dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
         val lp = WindowManager.LayoutParams()
         lp.copyFrom(dialog.window.attributes)
-
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT
         dialog.window.attributes = lp
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             dialog.window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY)
@@ -59,5 +59,6 @@ class RateNotificationService : Service() {
             dialog.window.setType(WindowManager.LayoutParams.TYPE_PHONE)
         }
         dialog.show()
+        dialog.tvNotNow.onClick { dialog.dismiss() }
     }
 }

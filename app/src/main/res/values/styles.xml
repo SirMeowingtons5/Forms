@@ -73,4 +73,12 @@
     <style name="RatingBarCustom" parent="Widget.AppCompat.RatingBar">
         <item name="android:progressDrawable">@drawable/custom_ratingbar</item>
     </style>
+
+    <style name="DialogCustom" parent="@android:style/Theme.Dialog">
+        <item name="android:textColor">#FF260067</item>
+        <item name="android:fontFamily">@font/qanelassoft_normal</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>
