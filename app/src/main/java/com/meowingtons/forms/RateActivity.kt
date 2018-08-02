@@ -102,11 +102,12 @@ class RateActivity : AppCompatActivity() {
         val dialog = Dialog(this@RateActivity)
         dialog.window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.rate_dialog_event)
+        dialog.setContentView(R.layout.layout_rate_dialog)
         dialog.setCancelable(true)
-
+        dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
         val lp = WindowManager.LayoutParams()
         lp.copyFrom(dialog.window.attributes)
+        dialog.window.attributes = lp
         dialog.show()
     }
 
