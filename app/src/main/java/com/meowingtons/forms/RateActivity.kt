@@ -15,11 +15,9 @@ import com.meowingtons.forms.entity.RateItem
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
 import java.util.*
 import com.meowingtons.forms.entity.RateItemState
-import com.meowingtons.forms.service.RateNotificationService
 import kotlinx.android.synthetic.main.fragment_rate_new.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.delay
-import kotlinx.coroutines.experimental.launch
+import kotlinx.android.synthetic.main.layout_rate_dialog.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class RateActivity : AppCompatActivity() {
 
@@ -29,10 +27,10 @@ class RateActivity : AppCompatActivity() {
         initTabs()
         initAdapter()
         //showDialog()
-        launch(UI){
+        /*launch(UI){
             delay(2000)
             startService(Intent(this@RateActivity, RateNotificationService::class.java))
-        }
+        }*/
     }
 
     private fun initTabs(){
@@ -109,6 +107,9 @@ class RateActivity : AppCompatActivity() {
         lp.copyFrom(dialog.window.attributes)
         dialog.window.attributes = lp
         dialog.show()
+        btnDayOff.onClick {
+            dialog.dismiss()
+        }
     }
 
     private fun initAdapter(){
